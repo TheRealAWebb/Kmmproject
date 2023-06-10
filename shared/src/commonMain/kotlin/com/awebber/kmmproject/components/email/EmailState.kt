@@ -6,10 +6,7 @@ import com.awebber.kmmproject.components.core.textFieldStateSaver
 private val EMAIL_VALIDATION_REGEX = "^[\\w-.]+(\\+[A-Za-z]*)?@([\\w-]+\\.)+[\\w-]{2,4}$".toRegex()
 
 class EmailState(val email: String? = null) :
-    TextFieldState(
-        validator = ::isEmailValid,
-        errorFor = ::emailValidationError
-    ) {
+    TextFieldState(validator = ::isEmailValid, errorFor = ::emailValidationError) {
     init {
         email?.let {
             text = it
@@ -29,4 +26,3 @@ private fun isEmailValid(email: String): Boolean {
     return EMAIL_VALIDATION_REGEX.matches(email)
 }
 
-val EmailStateSaver = textFieldStateSaver(EmailState())
